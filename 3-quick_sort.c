@@ -39,8 +39,8 @@ int lomuto_partition(int *array, int start, int end, int size)
 
 	for (j = start; j < end; j++)
 		if (array[j] < pivot)
-			swap(array, split_idx++, j, size);
-	swap(array, split_idx, end, size);
+			swap_nums(array, split_idx++, j, size);
+	swap_nums(array, split_idx, end, size);
 	return (split_idx);
 }
 
@@ -58,9 +58,9 @@ void recursive_quick_sort(int *array, int start, int end, int size)
 
 	if (start < end)
 	{
-		pivot_pos = partition(array, start, end, size);
-		recursive(array, start, pivot_pos - 1, size);
-		recursive(array, pivot_pos + 1, end, size);
+		pivot_pos = lomuto_partition(array, start, end, size);
+		recursive_quick_sort(array, start, pivot_pos - 1, size);
+		recursive_quick_sort(array, pivot_pos + 1, end, size);
 	}
 }
 
