@@ -60,9 +60,11 @@ int lomuto_partition(int *array, int low, int high, size_t size)
  */
 void recursive_quick_sort(int *array, int low, int high, size_t size)
 {
+	int partition_index = 0;
+
 	if (low < high)
 	{
-		int partition_index = lomuto_partition(array, low, high, size);
+		partition_index = lomuto_partition(array, low, high, size);
 
 		if (partition_index != 0)
 			recursive_quick_sort(array, low, partition_index - 1, size);

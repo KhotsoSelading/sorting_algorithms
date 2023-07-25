@@ -10,39 +10,34 @@
  */
 void insertion_sort_list(listint_t **list)
 {
-	listint_t *sorted_list, *temp, *current;
-
-	if (!list || !(*list) || !(*list)->next)
+	if (list == NULL || *list == NULL || (*list)->next == NULL)
 		return;
 
-	sorted_list = NULL;
+	listint_t *current, *swapper;
 
-	while (*list != NULL)
+	for (current = (*list)->next; current != NULL; current = current->next)
 	{
-		current = *list;
-		*list = (*list)->next;
+		swapper = current;
 
-		if (sorted_list == NULL || current->n < sorted_list->n)
+		while (swapper->prev != NULL && swapper->n < swapper->prev->n)
 		{
-			current->next = sorted_list;
-			current->prev = NULL;
-			if (sorted_list)
-				sorted_list->prev = current;
-			sorted_list = current;
-		}
-		else
-		{
-			temp = sorted_list;
+			swapper->prev->next = swapper->next;
+			if (swapper->next != NULL)
+				swapper->next->prev = swapper->prev;
 
-			while (temp->next != NULL && temp->next->n < current->n)
-				temp = temp->next;
+			swapper->next = swapper->prev;
+			swapper->prev = swapper->prev->prev;
 
-			current->prev = temp;
-			current->next = temp->next;
-			if (temp->next)
-				temp->next->prev = current;
-			temp->next = current;
+			if (swapper->prev != NULL)
+				swapper->prev->next = swapper;
+
+			if (swapper->next != NULL)
+				swapper->next->prev = swapper;
+
+			if (swapper->prev == NULL)
+				*list = swapper;
+
+			print_list(*list);
 		}
 	}
-	*list = sorted_list;
 }
