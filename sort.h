@@ -29,8 +29,8 @@ void selection_sort(int *array, size_t size);
 void quick_sort(int *array, size_t size);
 
 /* Helper functions */
-void swap_nums(int *array, size_t i, size_t j, size_t size);
-int lomuto_partition(int *array, int low, int high, size_t size);
-void recursive_quick_sort(int *array, int low, int high, size_t size);
+void swap_nums(int *array, size_t i, size_t j);
+int lomuto_partition(int *array, int low, int high);
+void recursive_quick_sort(int *array, int low, int high);
 
 #endif /* Sort_h */
