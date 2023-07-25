@@ -6,7 +6,6 @@
  * @array: The array to swap elements in.
  * @i: The index of the first element in the array to swap.
  * @j: The index of the second element in the array to swap.
- * @size: The size of the array.
  *
  * Return: Nothing
  */
@@ -28,7 +27,6 @@ void swap_nums(int *array, size_t i, size_t j)
  * @array: The array to partition.
  * @low: The lower bound of the partition.
  * @high: The upper bound of the partition.
- * @size: The size of the array.
  *
  * Return: The partition index.
  */
@@ -48,7 +46,7 @@ int lomuto_partition(int *array, int low, int high)
 
 	swap_nums(array, i, high);
 	print_array(array, high + 1);
-	return i;
+	return (i);
 }
 
 /**
@@ -56,7 +54,8 @@ int lomuto_partition(int *array, int low, int high)
  * @array: The array to sort.
  * @low: The lower bound of the partition.
  * @high: The upper bound of the partition.
- * @size: The size of the array.
+ *
+ * Return: Nothing
  */
 void recursive_quick_sort(int *array, int low, int high)
 {
