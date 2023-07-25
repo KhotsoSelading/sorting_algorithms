@@ -10,34 +10,30 @@
  **/
 void shell_sort(int *array, size_t size)
 {
-	int Swapper, gap, i, j;
+	int Swapper, interval, i, j;
 
 	if (array == NULL || size < 2)
 		return;
 
-	gap = 1;
-	while (gap < size / 3)
-		gap = gap * 3 + 1;
+	interval = 1;
+	while (interval < (int)size / 3)
+		interval = interval * 3 + 1;
 
-	while (gap > 0)
+	while (interval > 0)
 	{
-		i = gap;
-		while (i < size)
+		for (i = interval; i < (int)size; i++)
 		{
 			Swapper = array[i];
 			j = i;
-			while (j >= gap && array[j - gap] > Swapper)
+			while (j >= interval && array[j - interval] > Swapper)
 			{
-				array[j] = array[j - gap];
-				j -= gap;
+				array[j] = array[j - interval];
+				j -= interval;
 			}
 			array[j] = Swapper;
-
-			i++;
 		}
 
 		print_array(array, size);
-
-		gap /= 3;
+		interval = (interval - 1) / 3;
 	}
 }
